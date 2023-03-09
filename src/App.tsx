@@ -113,7 +113,6 @@ export default function App() {
                     }
                 }
                 pullMoveY && setPullMoveY(pullMoveY)
-                pullStartY && setPullStartY(pullStartY);
                 dist && setDist(dist)
                 distExtra && setDistExtra(distExtra)
             }}
