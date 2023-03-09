@@ -83,13 +83,13 @@ export default function App() {
                     return
                 }
                 const touchEvent = (e as unknown) as TouchEvent;
-                let pullMoveY, dist, distExtra;
+                let pullMoveY, distExtra;
                 pullMoveY = screenY(touchEvent);
                 if (state === "pending") {
                     setState('pulling')
                 }
                 if (pullStartY && pullMoveY) {
-                    dist = (pullMoveY - pullStartY);
+                    const dist = (pullMoveY - pullStartY);
                     distExtra = (dist - distIgnored);
                 }
                 if (distExtra && distExtra > 0) {
