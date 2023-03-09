@@ -146,7 +146,7 @@ export default function App() {
                 alignItems='center'
                 justifyContent='center'
             >
-                <CircularProgress/>
+                <CircularProgress disableShrink color="inherit" size={24}/>
             </Stack>
             <h1>Lorem ipsum</h1>
             <h1>Lorem ipsum</h1>
