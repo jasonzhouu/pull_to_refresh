@@ -37,7 +37,6 @@ export default function App() {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [scrollTop, setScrollTop] = useState(0);
     const [pullStartY, setPullStartY] = useState(0);
-    const [pullMoveY, setPullMoveY] = useState(0);
     const [state, setState] = useState<
         "pending" | "pulling" | "refreshing" | "releasing"
     >("pending");
@@ -61,8 +60,6 @@ export default function App() {
     }, [scrollTop]);
 
     const [height, setHeight] = useState(0);
-
-    console.table({height, state, pullMoveY, pullStartY});
 
     return (
         <Stack
@@ -109,7 +106,6 @@ export default function App() {
                         setState("pulling");
                     }
                 }
-                pullMoveY && setPullMoveY(pullMoveY)
             }}
             onTouchEnd={() => {
                 if (state === "releasing" && distResisted > distThreshold) {
@@ -127,7 +123,6 @@ export default function App() {
                     setState("pending");
                 }
                 setPullStartY(0);
-                setPullMoveY(0);
             }}
         >
             <Stack
