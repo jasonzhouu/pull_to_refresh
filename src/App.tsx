@@ -64,7 +64,7 @@ export default function App() {
 
     const [height, setHeight] = useState(0);
 
-    // console.table({ height, state, pullMoveY, pullStartY });
+    console.table({height, state, pullMoveY, pullStartY});
 
     return (
         <Stack
@@ -98,11 +98,11 @@ export default function App() {
                     dist = (pullMoveY - pullStartY);
                     distExtra = (dist - distIgnored);
                 }
-                debugger
                 if (distExtra && distExtra > 0) {
                     const distResisted =
                         resistanceFunction(distExtra / distThreshold) *
                         Math.min(distMax, distExtra);
+                    console.table({distExtra, distResisted})
                     setDistResisted(distResisted);
                     setHeight(distResisted);
                     if (state === "pulling" && distExtra > distThreshold) {
@@ -140,13 +140,13 @@ export default function App() {
         >
             <Stack
                 sx={{
-                    height: height,
+                    height: `${height}px`,
                     overflow: "hidden",
                 }}
                 alignItems='center'
                 justifyContent='center'
             >
-                <CircularProgress  />
+                <CircularProgress/>
             </Stack>
             <h1>Hello CodeSandbox</h1>
             <h1>Hello CodeSandbox</h1>
