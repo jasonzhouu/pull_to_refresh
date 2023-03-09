@@ -89,30 +89,21 @@ export default function App() {
                 if (!shouldPullToRefresh) {
                     return
                 }
-                setPullStartY(screenY(touchEvent));
+                let pullStartY, pullMoveY, dist, distExtra;
+                pullStartY = screenY(touchEvent);
                 if (state === "pending") {
-                    setState("pulling");
+                    setState('pulling')
                 }
                 if (pullStartY && pullMoveY) {
-                    setDist(pullMoveY - pullStartY);
+                    dist = (pullMoveY - pullStartY);
+                    distExtra = (dist - distIgnored);
                 }
-                setDistExtra(dist - distIgnored);
-                if (distExtra > 0) {
-                    const temp =
+                if (distExtra && distExtra > 0) {
+                    const distResisted =
                         resistanceFunction(distExtra / distThreshold) *
                         Math.min(distMax, distExtra);
-                    setDistResisted(temp);
-                    console.table({
-                        height: temp,
-                        pullMoveY,
-                        pullStartY,
-                        distResisted: temp,
-                        distExtra,
-                        distThreshold,
-                        distMax
-                    });
-                    setHeight(temp);
-                    // console.table({ distExtra, distThreshold });
+                    setDistResisted(distResisted);
+                    setHeight(distResisted);
                     if (state === "pulling" && distExtra > distThreshold) {
                         setState("releasing");
                     }
@@ -120,6 +111,10 @@ export default function App() {
                         setState("pulling");
                     }
                 }
+                pullMoveY && setPullMoveY(pullMoveY)
+                pullStartY && setPullStartY(pullStartY);
+                dist && setDist(dist)
+                distExtra && setDistExtra(distExtra)
             }}
             onTouchEnd={() => {
                 console.log("touch end");
