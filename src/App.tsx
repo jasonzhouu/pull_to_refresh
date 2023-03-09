@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState, useEffect } from "react";
 import "./styles.css";
-import { Stack, Box, debounce } from "@mui/material";
+import { Stack, Box,  } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
 const pointerEventsEnabled = true;
@@ -82,15 +82,13 @@ export default function App() {
       }}
       onTouchMove={(e) => {
         const touchEvent = (e as unknown) as TouchEvent;
-        if (!pullStartY) {
-          if (shouldPullToRefresh) {
-            setPullStartY(screenY(touchEvent));
-            // console.table({ pullStartY, pullMoveY });
-          }
-        } else {
-          setPullMoveY(screenY(touchEvent));
-          // console.table({ pullStartY, pullMoveY });
+        if (touchEvent.cancelable) {
+          e.preventDefault();
         }
+        if(!shouldPullToRefresh) {
+          return
+        }
+        setPullStartY(screenY(touchEvent));
         if (state === "pending") {
           setState("pulling");
         }
@@ -99,9 +97,6 @@ export default function App() {
         }
         setDistExtra(dist - distIgnored);
         if (distExtra > 0) {
-          if (touchEvent.cancelable) {
-            e.preventDefault();
-          }
           const temp =
             resistanceFunction(distExtra / distThreshold) *
             Math.min(distMax, distExtra);
