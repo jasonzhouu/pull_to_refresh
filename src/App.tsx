@@ -118,7 +118,6 @@ export default function App() {
                 distExtra && setDistExtra(distExtra)
             }}
             onTouchEnd={() => {
-                console.log("touch end");
                 if (state === "releasing" && distResisted > distThreshold) {
                     setState("refreshing");
                     timeout = setTimeout(async () => {
