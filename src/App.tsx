@@ -82,13 +82,10 @@ export default function App() {
                 clearTimeout(timeout);
             }}
             onTouchMove={(e) => {
-                const touchEvent = (e as unknown) as TouchEvent;
-                if (touchEvent.cancelable) {
-                    e.preventDefault();
-                }
                 if (!shouldPullToRefresh) {
                     return
                 }
+                const touchEvent = (e as unknown) as TouchEvent;
                 let pullMoveY, dist, distExtra;
                 pullMoveY = screenY(touchEvent);
                 if (state === "pending") {
@@ -99,6 +96,9 @@ export default function App() {
                     distExtra = (dist - distIgnored);
                 }
                 if (distExtra && distExtra > 0) {
+                    if (touchEvent.cancelable) {
+                        e.preventDefault();
+                    }
                     const distResisted =
                         resistanceFunction(distExtra / distThreshold) *
                         Math.min(distMax, distExtra);
