@@ -135,28 +135,32 @@ export default function App() {
             >
                 <CircularProgress disableShrink color="inherit" size={24}/>
             </Stack>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
-            <h1>Lorem ipsum</h1>
+            <Box sx={{
+                touchAction: 'pan-x pan-down pinch-zoom'
+            }}>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum</h1>
+            </Box>
         </Stack>
     );
 }
