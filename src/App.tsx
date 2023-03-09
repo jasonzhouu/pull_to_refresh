@@ -75,7 +75,6 @@ export default function App() {
                 const touchEvent = (e as unknown) as TouchEvent;
                 if (shouldPullToRefresh) {
                     setPullStartY(screenY(touchEvent));
-                    // console.table({ pullStartY, pullMoveY });
                 }
                 clearTimeout(timeout);
             }}
@@ -119,7 +118,6 @@ export default function App() {
                         // await fetchData();
                         setState("pending");
                         setHeight(0);
-                        // console.table({ state: "pending", pullMoveY, pullStartY, height });
                     }, 500);
                 } else {
                     if (state === "refreshing") {
