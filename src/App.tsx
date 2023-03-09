@@ -1,6 +1,6 @@
 import {useMemo, useRef, useState, useEffect} from "react";
 import "./styles.css";
-import {Stack, Box,} from "@mui/material";
+import {Stack, Box, CircularProgress} from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
 const pointerEventsEnabled = true;
@@ -89,8 +89,8 @@ export default function App() {
                 if (!shouldPullToRefresh) {
                     return
                 }
-                let pullStartY, pullMoveY, dist, distExtra;
-                pullStartY = screenY(touchEvent);
+                let pullMoveY, dist, distExtra;
+                pullMoveY = screenY(touchEvent);
                 if (state === "pending") {
                     setState('pulling')
                 }
@@ -98,6 +98,7 @@ export default function App() {
                     dist = (pullMoveY - pullStartY);
                     distExtra = (dist - distIgnored);
                 }
+                debugger
                 if (distExtra && distExtra > 0) {
                     const distResisted =
                         resistanceFunction(distExtra / distThreshold) *
@@ -137,14 +138,16 @@ export default function App() {
                 setPullMoveY(0);
             }}
         >
-            <Box
+            <Stack
                 sx={{
                     height: height,
-                    overflow: "hidden"
+                    overflow: "hidden",
                 }}
+                alignItems='center'
+                justifyContent='center'
             >
-                <RefreshIcon/>
-            </Box>
+                <CircularProgress  />
+            </Stack>
             <h1>Hello CodeSandbox</h1>
             <h1>Hello CodeSandbox</h1>
             <h1>Hello CodeSandbox</h1>
