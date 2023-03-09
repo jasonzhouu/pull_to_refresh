@@ -42,7 +42,7 @@ jobs:
       with:
         branch: gh-pages
         folder: build
-        repo-token: ${{ secrets.GH_TOKEN }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
 
 
 
