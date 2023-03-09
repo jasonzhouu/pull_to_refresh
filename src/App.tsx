@@ -41,7 +41,6 @@ export default function App() {
     const [state, setState] = useState<
         "pending" | "pulling" | "refreshing" | "releasing"
     >("pending");
-    const [dist, setDist] = useState(0);
     const [distResisted, setDistResisted] = useState(0);
 
     useEffect(() => {
@@ -112,7 +111,6 @@ export default function App() {
                     }
                 }
                 pullMoveY && setPullMoveY(pullMoveY)
-                dist && setDist(dist)
             }}
             onTouchEnd={() => {
                 if (state === "releasing" && distResisted > distThreshold) {
