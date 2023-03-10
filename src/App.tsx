@@ -59,6 +59,9 @@ export default function App() {
         return !scrollTop;
     }, [scrollTop]);
 
+    console.table({shouldPullToRefresh,scrollTop})
+    console.log(scrollRef.current)
+
     const [height, setHeight] = useState(0);
 
     return (
