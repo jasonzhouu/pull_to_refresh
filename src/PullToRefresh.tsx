@@ -40,13 +40,11 @@ export default function PullToRefresh() {
     const [state, setState] = useState<
         "pending" | "pulling" | "refreshing" | "releasing"
     >("pending");
+    const [height, setHeight] = useState(0);
 
     const enabled = useMemo(() => {
         return !scrollTop;
     }, [scrollTop]);
-
-
-    const [height, setHeight] = useState(0);
 
     return (
         <Stack
@@ -121,7 +119,7 @@ export default function PullToRefresh() {
             </Stack>
             <Box
                 onScroll={() => {
-                    setScrollTop(scrollRef.current?.scrollTop??0);
+                    setScrollTop(scrollRef.current?.scrollTop ?? 0);
                 }
                 }
                 ref={scrollRef}
