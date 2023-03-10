@@ -10,7 +10,7 @@ const root = createRoot(rootElement!);
 
 root.render(
     <StrictMode>
-        {/*<PullToRefresh/>*/}
-        <ReactPullToRefreshComponent/>
+        <PullToRefresh/>
+        {/*<ReactPullToRefreshComponent/>*/}
     </StrictMode>
 );
