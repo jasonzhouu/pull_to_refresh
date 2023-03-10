@@ -59,14 +59,13 @@ export default function PullToRefresh() {
         return !scrollTop;
     }, [scrollTop]);
 
-    console.table({shouldPullToRefresh,scrollTop})
+    console.table({shouldPullToRefresh, scrollTop})
     console.log(scrollRef.current)
 
     const [height, setHeight] = useState(0);
 
     return (
         <Stack
-            ref={scrollRef}
             className="App"
             onTouchStart={(e) => {
                 if (state !== "pending") {
@@ -138,9 +137,13 @@ export default function PullToRefresh() {
             >
                 <CircularProgress disableShrink color="inherit" size={24}/>
             </Stack>
-            <Box sx={{
-                touchAction: 'pan-x pan-down pinch-zoom'
-            }}>
+            <Box
+                ref={scrollRef}
+                sx={{
+                    touchAction: 'pan-x pan-down pinch-zoom',
+                    height: '600px',
+                    overflow: 'scroll'
+                }}>
                 <h1>Lorem ipsum</h1>
                 <h1>Lorem ipsum</h1>
                 <h1>Lorem ipsum</h1>
