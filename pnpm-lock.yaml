@@ -13,6 +13,7 @@ specifiers:
   loader-utils: 3.2.1
   react: 18.2.0
   react-dom: 18.2.0
+  react-pull-to-refresh: ^2.0.1
   react-scripts: 5.0.1
   typescript: 4.4.2
 
@@ -26,6 +27,7 @@ dependencies:
   loader-utils: 3.2.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-pull-to-refresh: 2.0.1_react@18.2.0
   react-scripts: 5.0.1_nghctfst4byva3bbeuhucfbbpy
 
 devDependencies:
@@ -5601,6 +5603,11 @@ packages:
       duplexer: 0.1.2
     dev: false
 
+  /hammerjs/2.0.8:
+    resolution: {integrity: sha512-tSQXBXS/MWQOn/RKckawJ61vvsDpCom87JgxiYdGwHdOa0ht0vzUWDlfioofFCRU0L+6NGDt6XzbgoJvZkMeRQ==}
+    engines: {node: '>=0.8.0'}
+    dev: false
+
   /handle-thing/2.0.1:
     resolution: {integrity: sha512-9Qn4yBxelxoh2Ow62nP+Ka/kMnOXRi8BXnRaUwezLNhqelnN49xKz4F/dPP8OYLxLxq6JDtZb2i9XznUQbNPTg==}
     dev: false
@@ -8553,6 +8560,15 @@ packages:
 
   /react-is/18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+    dev: false
+
+  /react-pull-to-refresh/2.0.1_react@18.2.0:
+    resolution: {integrity: sha512-mbNI9r3sBF4X+2fBO8c9CuXDLIywNuoZ24AIGU3Odi+L8C4MpS0tuhMQUSg5cSOuUtDFkE8Z/YnBYixo10QI6Q==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      hammerjs: 2.0.8
+      react: 18.2.0
     dev: false
 
   /react-refresh/0.11.0:
