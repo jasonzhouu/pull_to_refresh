@@ -40,7 +40,6 @@ export default function PullToRefresh() {
     const [state, setState] = useState<
         "pending" | "pulling" | "refreshing" | "releasing"
     >("pending");
-    const [distResisted, setDistResisted] = useState(0);
 
     const enabled = useMemo(() => {
         return !scrollTop;
@@ -83,7 +82,6 @@ export default function PullToRefresh() {
                         resistanceFunction(distExtra / distThreshold) *
                         Math.min(distMax, distExtra);
                     console.table({distExtra, distResisted})
-                    setDistResisted(distResisted);
                     setHeight(distResisted);
                     if (state === "pulling" && distExtra > distThreshold) {
                         setState("releasing");
@@ -94,7 +92,7 @@ export default function PullToRefresh() {
                 }
             }}
             onTouchEnd={() => {
-                if (state === "releasing" && distResisted > distThreshold) {
+                if (state === "releasing" && height > distThreshold) {
                     setState("refreshing");
                     timeout = setTimeout(async () => {
                         // await fetchData();
