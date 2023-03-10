@@ -59,8 +59,7 @@ export default function PullToRefresh() {
         return !scrollTop;
     }, [scrollTop]);
 
-    console.table({shouldPullToRefresh: enabled, scrollTop})
-    console.log(scrollRef.current)
+    console.table({enabled, scrollTop})
 
     const [height, setHeight] = useState(0);
 
