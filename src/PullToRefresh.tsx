@@ -55,11 +55,11 @@ export default function PullToRefresh() {
         };
     }, []);
 
-    const shouldPullToRefresh = useMemo(() => {
+    const enabled = useMemo(() => {
         return !scrollTop;
     }, [scrollTop]);
 
-    console.table({shouldPullToRefresh, scrollTop})
+    console.table({shouldPullToRefresh: enabled, scrollTop})
     console.log(scrollRef.current)
 
     const [height, setHeight] = useState(0);
@@ -72,13 +72,13 @@ export default function PullToRefresh() {
                     return;
                 }
                 const touchEvent = (e as unknown) as TouchEvent;
-                if (shouldPullToRefresh) {
+                if (enabled) {
                     setPullStartY(screenY(touchEvent));
                 }
                 clearTimeout(timeout);
             }}
             onTouchMove={(e) => {
-                if (!shouldPullToRefresh) {
+                if (!enabled) {
                     return
                 }
                 const touchEvent = (e as unknown) as TouchEvent;
