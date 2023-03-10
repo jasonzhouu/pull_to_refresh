@@ -42,24 +42,10 @@ export default function PullToRefresh() {
     >("pending");
     const [distResisted, setDistResisted] = useState(0);
 
-    useEffect(() => {
-        function handleScroll() {
-            if (scrollRef.current?.scrollTop) {
-                setScrollTop(scrollRef.current?.scrollTop);
-            }
-        }
-
-        scrollRef.current?.addEventListener("scroll", handleScroll);
-        return () => {
-            scrollRef.current?.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
     const enabled = useMemo(() => {
         return !scrollTop;
     }, [scrollTop]);
 
-    console.table({enabled, scrollTop})
 
     const [height, setHeight] = useState(0);
 
@@ -136,9 +122,13 @@ export default function PullToRefresh() {
                 <CircularProgress disableShrink color="inherit" size={24}/>
             </Stack>
             <Box
+                onScroll={() => {
+                    setScrollTop(scrollRef.current?.scrollTop??0);
+                }
+                }
                 ref={scrollRef}
                 sx={{
-                    touchAction: 'pan-x pan-down pinch-zoom',
+                    // touchAction: 'pan-x pan-up pan-down pinch-zoom',
                     height: '600px',
                     overflow: 'scroll'
                 }}>
