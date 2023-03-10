@@ -33,7 +33,7 @@ const screenY = function screenY(event: TouchEvent | PointerEvent): number {
 
 let timeout: ReturnType<typeof setTimeout>;
 
-export default function App() {
+export default function PullToRefresh() {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [scrollTop, setScrollTop] = useState(0);
     const [pullStartY, setPullStartY] = useState(0);
