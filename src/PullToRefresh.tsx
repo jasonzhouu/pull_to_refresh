@@ -68,16 +68,15 @@ export default function PullToRefresh() {
         <Stack
             className="App"
             onTouchStart={(e) => {
-                if (state !== "pending") {
+                if (state !== "pending" || !enabled) {
                     return;
                 }
                 const touchEvent = (e as unknown) as TouchEvent;
-                if (enabled) {
-                    setPullStartY(screenY(touchEvent));
-                }
+                setPullStartY(screenY(touchEvent));
                 clearTimeout(timeout);
             }}
             onTouchMove={(e) => {
+                debugger
                 if (!enabled) {
                     return
                 }
