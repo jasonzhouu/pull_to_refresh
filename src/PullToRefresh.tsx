@@ -35,16 +35,12 @@ let timeout: ReturnType<typeof setTimeout>;
 
 export default function PullToRefresh() {
     const scrollRef = useRef<HTMLDivElement>(null);
-    const [scrollTop, setScrollTop] = useState(0);
     const [pullStartY, setPullStartY] = useState(0);
     const [state, setState] = useState<
         "pending" | "pulling" | "refreshing" | "releasing"
     >("pending");
     const [height, setHeight] = useState(0);
 
-    const enabled = useMemo(() => {
-        return !scrollTop;
-    }, [scrollTop]);
 
     return (
         <Stack
