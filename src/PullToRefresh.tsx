@@ -41,7 +41,7 @@ export default function PullToRefresh() {
     >("pending");
     const [height, setHeight] = useState(0);
 
-    const [enabled, setEnabled] = useState(false);
+    const [enabled, setEnabled] = useState(true);
 
     const onScroll = useCallback(() => {
         console.log('scroll')
