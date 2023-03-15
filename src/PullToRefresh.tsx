@@ -79,7 +79,6 @@ export default function PullToRefresh() {
                     const distResisted =
                         resistanceFunction(distExtra / distThreshold) *
                         Math.min(distMax, distExtra);
-                    console.table({distExtra, distResisted})
                     setHeight(distResisted);
                     if (state === "pulling" && distExtra > distThreshold) {
                         setState("releasing");
