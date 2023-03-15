@@ -62,6 +62,9 @@ export default function PullToRefresh() {
         <Stack
             className="App"
             ref={scrollRef}
+            sx={{
+                touchAction: enabled ? 'pan-x pan-down pinch-zoom' : ''
+            }}
             onTouchStart={(e) => {
                 if (state !== "pending" || !enabled) {
                     return;
@@ -129,11 +132,7 @@ export default function PullToRefresh() {
             >
                 <CircularProgress disableShrink color="inherit" size={24}/>
             </Stack>
-            <Box
-                sx={{
-                    touchAction: enabled ? 'pan-x pan-down pinch-zoom' : ''
-                }}
-            >
+            <Box>
                 <h1>Lorem ipsum</h1>
                 <h1>Lorem ipsum</h1>
                 <h1>Lorem ipsum</h1>
