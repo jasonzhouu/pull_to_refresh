@@ -49,6 +49,9 @@ export default function PullToRefresh() {
     return (
         <Stack
             className="App"
+            sx={{
+                touchAction: 'pan-x pan-down pinch-zoom'
+            }}
             onTouchStart={(e) => {
                 if (state !== "pending" || !enabled) {
                     return;
