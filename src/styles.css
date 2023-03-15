@@ -1,3 +1,8 @@
+#root {
+  height: 500px;
+  overflow: hidden;
+}
+
 .ptr-element {
   position: absolute;
   top: 0;
