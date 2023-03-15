@@ -119,11 +119,7 @@ export default function PullToRefresh() {
             </Stack>
             <Box
                 ref={scrollRef}
-                sx={{
-                    // touchAction: 'pan-x pan-up pan-down pinch-zoom',
-                    height: '600px',
-                    overflow: 'scroll'
-                }}>
+            >
                 <h1>Lorem ipsum</h1>
                 <h1>Lorem ipsum</h1>
                 <h1>Lorem ipsum</h1>
