@@ -63,7 +63,7 @@ export default function PullToRefresh() {
             className="App"
             ref={scrollRef}
             sx={{
-                touchAction: enabled ? 'pan-x pan-down pinch-zoom' : ''
+                touchAction: enabled ? 'pan-down' : ''
             }}
             onTouchStart={(e) => {
                 if (state !== "pending" || !enabled) {
@@ -133,28 +133,28 @@ export default function PullToRefresh() {
                 <CircularProgress disableShrink color="inherit" size={24}/>
             </Stack>
             <Box>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
+                <h1>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</h1>
             </Box>
         </Stack>
     );
