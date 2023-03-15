@@ -87,7 +87,7 @@ export default function PullToRefresh() {
                     const dist = (pullMoveY - pullStartY);
                     distExtra = (dist - distIgnored);
                 }
-                if (distExtra) {
+                if (distExtra && distExtra > 0) {
                     if (touchEvent.cancelable) {
                         e.preventDefault();
                     }
