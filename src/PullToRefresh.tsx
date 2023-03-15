@@ -118,10 +118,6 @@ export default function PullToRefresh() {
                 <CircularProgress disableShrink color="inherit" size={24}/>
             </Stack>
             <Box
-                onScroll={() => {
-                    setScrollTop(scrollRef.current?.scrollTop ?? 0);
-                }
-                }
                 ref={scrollRef}
                 sx={{
                     // touchAction: 'pan-x pan-up pan-down pinch-zoom',
