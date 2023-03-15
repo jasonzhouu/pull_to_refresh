@@ -1,4 +1,4 @@
-import {useMemo, useRef, useState, useEffect} from "react";
+import {useMemo, useRef, useState, useEffect, useCallback} from "react";
 import "./styles.css";
 import {Stack, Box, CircularProgress} from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
@@ -41,14 +41,30 @@ export default function PullToRefresh() {
     >("pending");
     const [height, setHeight] = useState(0);
 
+    const [enabled, setEnabled] = useState(false);
+
+    const onScroll = useCallback(() => {
+        console.log('scroll')
+        // console.log(scrollRef.current?.offsetParent?.scrollTop)
+        const enabled = !scrollRef.current?.offsetParent?.scrollTop
+        setEnabled(enabled)
+        return enabled
+    }, [scrollRef])
+
+    // useEffect(() => {
+    //     console.log(scrollRef.current?.offsetTop)
+    // }, [scrollRef])
 
     return (
         <Stack
             className="App"
             sx={{
-                touchAction: 'pan-x pan-down pinch-zoom'
+                height: '100%',
+                overflow: 'auto',
+                position: 'relative'
             }}
             onTouchStart={(e) => {
+                // const enabled = onScroll()
                 if (state !== "pending" || !enabled) {
                     return;
                 }
@@ -57,9 +73,11 @@ export default function PullToRefresh() {
                 clearTimeout(timeout);
             }}
             onTouchMove={(e) => {
+                // const enabled = onScroll()
                 if (!enabled) {
                     return
                 }
+                // scrollRef.current?.style.touchAction = ''
                 const touchEvent = (e as unknown) as TouchEvent;
                 let distExtra;
                 const pullMoveY = screenY(touchEvent);
@@ -70,7 +88,7 @@ export default function PullToRefresh() {
                     const dist = (pullMoveY - pullStartY);
                     distExtra = (dist - distIgnored);
                 }
-                if (distExtra && distExtra > 0) {
+                if (distExtra ) {
                     if (touchEvent.cancelable) {
                         e.preventDefault();
                     }
@@ -78,6 +96,7 @@ export default function PullToRefresh() {
                         resistanceFunction(distExtra / distThreshold) *
                         Math.min(distMax, distExtra);
                     setHeight(distResisted);
+                    debugger
                     if (state === "pulling" && distExtra > distThreshold) {
                         setState("releasing");
                     }
@@ -90,7 +109,7 @@ export default function PullToRefresh() {
                 if (state === "releasing" && height > distThreshold) {
                     setState("refreshing");
                     timeout = setTimeout(async () => {
-                        // await fetchData();
+                        console.log('refresh')
                         setState("pending");
                         setHeight(0);
                     }, 500);
@@ -103,6 +122,10 @@ export default function PullToRefresh() {
                 }
                 setPullStartY(0);
             }}
+            onScroll={() => {
+                onScroll()
+            }
+            }
         >
             <Stack
                 sx={{
@@ -116,6 +139,9 @@ export default function PullToRefresh() {
             </Stack>
             <Box
                 ref={scrollRef}
+                sx={{
+                    touchAction: enabled ? 'pan-x pan-down pinch-zoom' : ''
+                }}
             >
                 <h1>Lorem ipsum</h1>
                 <h1>Lorem ipsum</h1>
