@@ -40,31 +40,29 @@ export default function PullToRefresh() {
         "pending" | "pulling" | "refreshing" | "releasing"
     >("pending");
     const [height, setHeight] = useState(0);
-
     const [enabled, setEnabled] = useState(true);
 
-    const onScroll = useCallback(() => {
-        console.log('scroll')
-        // console.log(scrollRef.current?.offsetParent?.scrollTop)
-        const enabled = !scrollRef.current?.offsetParent?.scrollTop
-        setEnabled(enabled)
-        return enabled
-    }, [scrollRef])
+    useEffect(() => {
+        const parent = scrollRef.current?.offsetParent
+        if (!parent) {
+            return
+        }
 
-    // useEffect(() => {
-    //     console.log(scrollRef.current?.offsetTop)
-    // }, [scrollRef])
+        function handleScroll() {
+            setEnabled(!parent?.scrollTop)
+        }
+
+        parent.addEventListener('scroll', handleScroll)
+        return () => {
+            parent.removeEventListener('scroll', handleScroll)
+        }
+    }, [scrollRef, setEnabled])
 
     return (
         <Stack
             className="App"
-            sx={{
-                height: '100%',
-                overflow: 'auto',
-                position: 'relative'
-            }}
+            ref={scrollRef}
             onTouchStart={(e) => {
-                // const enabled = onScroll()
                 if (state !== "pending" || !enabled) {
                     return;
                 }
@@ -73,7 +71,6 @@ export default function PullToRefresh() {
                 clearTimeout(timeout);
             }}
             onTouchMove={(e) => {
-                // const enabled = onScroll()
                 if (!enabled) {
                     return
                 }
@@ -88,7 +85,7 @@ export default function PullToRefresh() {
                     const dist = (pullMoveY - pullStartY);
                     distExtra = (dist - distIgnored);
                 }
-                if (distExtra ) {
+                if (distExtra) {
                     if (touchEvent.cancelable) {
                         e.preventDefault();
                     }
@@ -122,10 +119,6 @@ export default function PullToRefresh() {
                 }
                 setPullStartY(0);
             }}
-            onScroll={() => {
-                onScroll()
-            }
-            }
         >
             <Stack
                 sx={{
@@ -138,7 +131,6 @@ export default function PullToRefresh() {
                 <CircularProgress disableShrink color="inherit" size={24}/>
             </Stack>
             <Box
-                ref={scrollRef}
                 sx={{
                     touchAction: enabled ? 'pan-x pan-down pinch-zoom' : ''
                 }}
