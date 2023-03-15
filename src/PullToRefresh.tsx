@@ -74,7 +74,6 @@ export default function PullToRefresh() {
                 if (!enabled) {
                     return
                 }
-                // scrollRef.current?.style.touchAction = ''
                 const touchEvent = (e as unknown) as TouchEvent;
                 let distExtra;
                 const pullMoveY = screenY(touchEvent);
