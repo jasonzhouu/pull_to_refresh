@@ -58,7 +58,6 @@ export default function PullToRefresh() {
                 clearTimeout(timeout);
             }}
             onTouchMove={(e) => {
-                debugger
                 if (!enabled) {
                     return
                 }
